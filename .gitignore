@@ -1,0 +1,22 @@
+# Virtual Environments
+.venv/
+venv/
+env/
+
+# Python Cache & Compiled Files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Secrets and Environment Variables
+.env
+# Uncomment the next line if your config.yaml contains database passwords or API keys:
+# config.yaml
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
