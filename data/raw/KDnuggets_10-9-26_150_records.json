@@ -1,0 +1,1202 @@
+[
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  },
+  {
+    "title": "7 Steps to Become a Forward Deployed Engineer in 2026",
+    "author": "Kanwal Mehreen",
+    "published_date": "Thu, 10 Sep 2026 14:00:10 +0000",
+    "url": "https://www.kdnuggets.com/7-steps-to-become-a-forward-deployed-engineer-in-2026",
+    "tags": null,
+    "summary": "FDEs are becoming some of the most in-demand engineers in AI. Here’s the 7-step roadmap to becoming one in 2026."
+  },
+  {
+    "title": "5 Useful Python Scripts to Automate CSV Processing",
+    "author": "Bala Priya C",
+    "published_date": "Thu, 10 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/5-useful-python-scripts-to-automate-csv-processing",
+    "tags": null,
+    "summary": "Automate common CSV tasks with these 5 Python scripts for cleaning, validating, transforming, and processing CSV files using the standard library."
+  },
+  {
+    "title": "Build an AI Data Analyst That Thinks Like a Senior Analyst",
+    "author": "Nate Rosidi",
+    "published_date": "Wed, 09 Sep 2026 14:00:50 +0000",
+    "url": "https://www.kdnuggets.com/build-an-ai-data-analyst-that-thinks-like-a-senior-analyst",
+    "tags": null,
+    "summary": "A six-stage pipeline that checks its numbers before calling anything an answer."
+  },
+  {
+    "title": "7 Approaches to Efficient LLM Training on Limited Hardware",
+    "author": "Vinod Chugani",
+    "published_date": "Wed, 09 Sep 2026 12:00:50 +0000",
+    "url": "https://www.kdnuggets.com/7-approaches-to-efficient-llm-training-on-limited-hardware",
+    "tags": null,
+    "summary": "Learn seven engineering techniques to train large language models on consumer GPUs without running out of memory."
+  },
+  {
+    "title": "From RAG to Agentic AI: Building the Next Generation of Intelligent Enterprise Systems",
+    "author": "Mona Sachdev",
+    "published_date": "Tue, 08 Sep 2026 16:00:12 +0000",
+    "url": "https://www.kdnuggets.com/from-rag-to-agentic-ai-building-the-next-generation-of-intelligent-enterprise-systems",
+    "tags": null,
+    "summary": "Over the past several years, I have worked through three successive generations of intelligent retrieval systems, each solving problems the previous generation could not. Here is what I have learned."
+  },
+  {
+    "title": "Is ArrowJS Really the UI for the Agentic Era? Here’s What I Found",
+    "author": "Vinod Chugani",
+    "published_date": "Tue, 08 Sep 2026 15:00:37 +0000",
+    "url": "https://www.kdnuggets.com/is-arrowjs-really-the-ui-for-the-agentic-era",
+    "tags": null,
+    "summary": "The way we build interfaces is changing. As AI agents write more of our code, the tools we use to render that code may need to change too."
+  },
+  {
+    "title": "5 Ways I Access Coding Models for Free",
+    "author": "Abid Ali Awan",
+    "published_date": "Tue, 08 Sep 2026 14:02:37 +0000",
+    "url": "https://www.kdnuggets.com/5-ways-i-access-coding-models-for-free",
+    "tags": null,
+    "summary": "Explore five free ways to access AI coding agents, proprietary coding models, and open-weight models without paying for expensive subscriptions or GPUs."
+  },
+  {
+    "title": "Switchyard: NVIDIA’s Open Source Routing Library",
+    "author": "Kanwal Mehreen",
+    "published_date": "Fri, 04 Sep 2026 14:00:07 +0000",
+    "url": "https://www.kdnuggets.com/switchyard-nvidias-open-source-routing-library",
+    "tags": null,
+    "summary": "Stop sending every AI request to your most expensive model. See how intelligent routing can cut cost and latency without sacrificing much quality."
+  },
+  {
+    "title": "5 Free LLM API Providers You Can Use in 2026",
+    "author": "Abid Ali Awan",
+    "published_date": "Fri, 04 Sep 2026 12:00:38 +0000",
+    "url": "https://www.kdnuggets.com/5-free-llm-api-providers-you-can-use-in-2026",
+    "tags": null,
+    "summary": "Explore five free AI API providers for accessing large language models, fast inference, multimodal AI, and agentic applications without paying for API usage."
+  },
+  {
+    "title": "I Asked ChatGPT to Analyze 3 Datasets. It Made the Same Mistakes Every Time",
+    "author": "Nate Rosidi",
+    "published_date": "Thu, 03 Sep 2026 14:00:05 +0000",
+    "url": "https://www.kdnuggets.com/i-asked-chatgpt-to-analyze-3-datasets-it-made-the-same-mistakes-every-time",
+    "tags": null,
+    "summary": "The review pass fixed a row count and approved two wrong conclusions."
+  }
+]
