@@ -1,0 +1,298 @@
+[
+  {
+    "title": "Optimizing LLM Inference Costs in Multi-Agent Systems with Adaptive Model Routing",
+    "author": "Partha Sarkar",
+    "published_date": "Thu, 10 Sep 2026 12:30:01 GMT",
+    "url": "https://towardsdatascience.com/optimizing-llm-inference-costs-in-multi-agent-systems-with-adaptive-model-routing/",
+    "tags": [
+      "Agentic AI",
+      "Agent Architecture",
+      "LLM Agents",
+      "Multi Agent Systems",
+      "LLM Inference",
+      "Inference"
+    ],
+    "summary": "<p>Moving from static model assignment to intelligent, task-level LLM selection.</p>\n<p>The post <a href=\"https://towardsdatascience.com/optimizing-llm-inference-costs-in-multi-agent-systems-with-adaptive-model-routing/\">Optimizing LLM Inference Costs in Multi-Agent Systems with Adaptive Model Routing</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "Who Questions What Works: When Should We Retest Our Assumptions?",
+    "author": "Erika Gomes-Gonçalves",
+    "published_date": "Thu, 10 Sep 2026 11:00:01 GMT",
+    "url": "https://towardsdatascience.com/who-questions-what-works-when-should-we-retest-our-assumptions/",
+    "tags": [
+      "Data Science",
+      "Concept Drift",
+      "Ai Governance",
+      "Mlops",
+      "Risk Management",
+      "Editor's Picks"
+    ],
+    "summary": "<p>A model is only as reliable as the assumptions behind it</p>\n<p>The post <a href=\"https://towardsdatascience.com/who-questions-what-works-when-should-we-retest-our-assumptions/\">Who Questions What Works: When Should We Retest Our Assumptions?</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "Getting started with dbt",
+    "author": "Thomas Reid",
+    "published_date": "Wed, 09 Sep 2026 15:30:01 GMT",
+    "url": "https://towardsdatascience.com/getting-started-with-dbt/",
+    "tags": [
+      "Data Engineering",
+      "Python",
+      "Dbt",
+      "Sql Analytics",
+      "Sql",
+      "Programming"
+    ],
+    "summary": "<p>A practical guide to building, testing, and documenting SQL transformations</p>\n<p>The post <a href=\"https://towardsdatascience.com/getting-started-with-dbt/\">Getting started with dbt</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "The Symmetry That Breaks Neural Network Averaging",
+    "author": "Ananya Bhattacharyya",
+    "published_date": "Wed, 09 Sep 2026 14:00:02 GMT",
+    "url": "https://towardsdatascience.com/the-symmetry-that-breaks-neural-network-averaging/",
+    "tags": [
+      "Deep Learning",
+      "Neural Networks",
+      "Optimisation",
+      "Neural Network Training",
+      "Machine Learning",
+      "Editor's Picks"
+    ],
+    "summary": "<p>Understanding permutation symmetry in deep learning, and what it means for weight averaging and model merging</p>\n<p>The post <a href=\"https://towardsdatascience.com/the-symmetry-that-breaks-neural-network-averaging/\">The Symmetry That Breaks Neural Network Averaging</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "When One Process Becomes Too Much: Splitting a Pipeline into MCP Services",
+    "author": "Priyansh Bhardwaj",
+    "published_date": "Wed, 09 Sep 2026 12:30:02 GMT",
+    "url": "https://towardsdatascience.com/when-one-process-becomes-too-much-splitting-a-pipeline-into-mcp-services/",
+    "tags": [
+      "Agentic AI",
+      "Agentic Workflows",
+      "Model Context Protocol",
+      "Llm Applications",
+      "Generative Ai",
+      "Editor's Picks"
+    ],
+    "summary": "<p>How we split a tightly coupled Python pipeline into independently deployable services</p>\n<p>The post <a href=\"https://towardsdatascience.com/when-one-process-becomes-too-much-splitting-a-pipeline-into-mcp-services/\">When One Process Becomes Too Much: Splitting a Pipeline into MCP Services</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "10 Statistical Traps We Often Overlook",
+    "author": "Sara A. Metwalli",
+    "published_date": "Wed, 09 Sep 2026 11:00:02 GMT",
+    "url": "https://towardsdatascience.com/10-statistical-traps-we-often-overlook/",
+    "tags": [
+      "Data Science",
+      "Statisitcs",
+      "Data",
+      "Data Sceince",
+      "Math",
+      "Deep Dives"
+    ],
+    "summary": "<p>Statistical thinking beyond formulas</p>\n<p>The post <a href=\"https://towardsdatascience.com/10-statistical-traps-we-often-overlook/\">10 Statistical Traps We Often Overlook</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "How to Maximize GPT-6 Astra",
+    "author": "Eivind Kjosbakken",
+    "published_date": "Tue, 08 Sep 2026 18:00:35 GMT",
+    "url": "https://towardsdatascience.com/how-to-maximize-gpt-6-astra/",
+    "tags": [
+      "Large Language Models",
+      "OpenAI",
+      "Llm",
+      "LLM Agents",
+      "Machine Learning",
+      "Artificial Intelligence"
+    ],
+    "summary": "<p>My first impressions of OpenAI's new frontier model</p>\n<p>The post <a href=\"https://towardsdatascience.com/how-to-maximize-gpt-6-astra/\">How to Maximize GPT-6 Astra</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "The Model Validation Playbook for GenAI: Lessons from Banking",
+    "author": "Ananya Bhattacharyya",
+    "published_date": "Tue, 08 Sep 2026 17:34:37 GMT",
+    "url": "https://towardsdatascience.com/the-model-validation-playbook-for-genai-lessons-from-banking/",
+    "tags": [
+      "Artificial Intelligence",
+      "Model Validation",
+      "Ai Governance",
+      "Responsible Ai",
+      "Ai Regulation",
+      "Editor's Picks"
+    ],
+    "summary": "<p>How model validation standards are changing for LLM-based systems: what breaks, what carries over, and how to test output quality</p>\n<p>The post <a href=\"https://towardsdatascience.com/the-model-validation-playbook-for-genai-lessons-from-banking/\">The Model Validation Playbook for GenAI: Lessons from Banking</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "A Beginner’s Guide to World Models",
+    "author": "Mauro Di Pietro",
+    "published_date": "Tue, 08 Sep 2026 17:27:42 GMT",
+    "url": "https://towardsdatascience.com/a-beginners-guide-to-world-models/",
+    "tags": [
+      "Deep Learning",
+      "Computer Vision",
+      "World Model",
+      "Reinforcemect Learning",
+      "Pytorch",
+      "Latent Space"
+    ],
+    "summary": "<p>Learn how to simulate reality with Python</p>\n<p>The post <a href=\"https://towardsdatascience.com/a-beginners-guide-to-world-models/\">A Beginner’s Guide to World Models</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "Introducing ShipAI",
+    "author": "TDS Editors",
+    "published_date": "Tue, 08 Sep 2026 13:41:29 GMT",
+    "url": "https://towardsdatascience.com/introducing-shipai/",
+    "tags": [
+      "Artificial Intelligence",
+      "News",
+      "AI"
+    ],
+    "summary": "<p>Towards Data Science launches a video showcase for real-world AI work</p>\n<p>The post <a href=\"https://towardsdatascience.com/introducing-shipai/\">Introducing ShipAI</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "Context Windows Don’t Know What’s Still True — I Built a Validity Layer That Does",
+    "author": "Emmimal P Alexander",
+    "published_date": "Tue, 08 Sep 2026 11:00:01 GMT",
+    "url": "https://towardsdatascience.com/context-windows-dont-know-whats-still-true-i-built-a-validity-layer-that-does/",
+    "tags": [
+      "Large Language Models",
+      "Context Engineering",
+      "AI Agents",
+      "Machine Learning",
+      "Llm",
+      "Deep Dives"
+    ],
+    "summary": "<p>A context window can be technically complete and still describe a world that no longer exists. I built a deterministic benchmark to measure the cost of acting on stale context.</p>\n<p>The post <a href=\"https://towardsdatascience.com/context-windows-dont-know-whats-still-true-i-built-a-validity-layer-that-does/\">Context Windows Don’t Know What’s Still True — I Built a Validity Layer That Does</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "I Vibe-Coded an App in Just Two Hours (And Regretted It the Next Day)",
+    "author": "Thuwarakesh Murallie",
+    "published_date": "Mon, 07 Sep 2026 14:00:01 GMT",
+    "url": "https://towardsdatascience.com/i-vibe-coded-an-app-in-just-two-hours-and-regretted-it-the-next-day/",
+    "tags": [
+      "Agentic AI",
+      "Gemini",
+      "AI Agents",
+      "Vibe coding",
+      "App Development",
+      "Editor's Picks"
+    ],
+    "summary": "<p>I saved my day with a mere $52 bill. But you don't have to repeat my mistake.</p>\n<p>The post <a href=\"https://towardsdatascience.com/i-vibe-coded-an-app-in-just-two-hours-and-regretted-it-the-next-day/\">I Vibe-Coded an App in Just Two Hours (And Regretted It the Next Day)</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "Why Most Multi-Agent Systems Fail Even When Evaluation Passes",
+    "author": "Benjamin Nweke",
+    "published_date": "Mon, 07 Sep 2026 12:00:01 GMT",
+    "url": "https://towardsdatascience.com/why-most-multi-agent-systems-fail-even-when-evaluation-passes/",
+    "tags": [
+      "Agentic AI",
+      "AI Agents",
+      "Machine Learning",
+      "Artificial Intelligence",
+      "Llm",
+      "Python"
+    ],
+    "summary": "<p>How to catch a payload that looks correct but isn't, using a watchdog pattern with working Python.</p>\n<p>The post <a href=\"https://towardsdatascience.com/why-most-multi-agent-systems-fail-even-when-evaluation-passes/\">Why Most Multi-Agent Systems Fail Even When Evaluation Passes</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "Text Watermarking in Python: Catch Whoever Copies Your Writing",
+    "author": "Chien Vu Minh",
+    "published_date": "Sun, 06 Sep 2026 14:00:01 GMT",
+    "url": "https://towardsdatascience.com/text-watermarking-in-python-catch-whoever-copies-your-writing/",
+    "tags": [
+      "Large Language Models",
+      "Data Science",
+      "Natural Language Processing",
+      "Llm",
+      "Watermarking",
+      "Statistics"
+    ],
+    "summary": "<p>AI companies quietly watermark billions of words a day. Here’s how to apply the same three families of techniques to your own writing—and what real experiments reveal about which watermarks survive copy-paste, editing, and paraphrasing.</p>\n<p>The post <a href=\"https://towardsdatascience.com/text-watermarking-in-python-catch-whoever-copies-your-writing/\">Text Watermarking in Python: Catch Whoever Copies Your Writing</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "Linear Discriminant Analysis (LDA) in Real-Life: Dimensionality Reduction in a Real-Estate Dataset",
+    "author": "Carolina Bento",
+    "published_date": "Sun, 06 Sep 2026 12:00:02 GMT",
+    "url": "https://towardsdatascience.com/linear-discriminant-analysis-lda-in-real-life-dimensionality-reduction-in-a-real-estate-dataset/",
+    "tags": [
+      "Machine Learning",
+      "Deep Dives",
+      "Linear Discriminant",
+      "Lda",
+      "Data Science",
+      "Dimensionality Reduction"
+    ],
+    "summary": "<p>Using LDA for dimensionality reduction in classification problems</p>\n<p>The post <a href=\"https://towardsdatascience.com/linear-discriminant-analysis-lda-in-real-life-dimensionality-reduction-in-a-real-estate-dataset/\">Linear Discriminant Analysis (LDA) in Real-Life: Dimensionality Reduction in a Real-Estate Dataset</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "Why Transformers Need Positional Encoding For Time Series: A Visual Guide",
+    "author": "Gurjinder Kaur",
+    "published_date": "Sat, 05 Sep 2026 15:00:01 GMT",
+    "url": "https://towardsdatascience.com/why-transformers-need-positional-encoding-for-time-series-a-visual-guide/",
+    "tags": [
+      "Deep Learning",
+      "Time Series",
+      "Self Attention",
+      "Transformers",
+      "Positional Encoding",
+      "Editor's Picks"
+    ],
+    "summary": "<p>From scalar observations to self-attention, and how positional information restores sequence order</p>\n<p>The post <a href=\"https://towardsdatascience.com/why-transformers-need-positional-encoding-for-time-series-a-visual-guide/\">Why Transformers Need Positional Encoding For Time Series: A Visual Guide</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "Dynamical System Transfer Learning with Reduced Order Models",
+    "author": "Robert Etter",
+    "published_date": "Sat, 05 Sep 2026 13:00:01 GMT",
+    "url": "https://towardsdatascience.com/dynamical-system-transfer-learning-with-reduced-order-models/",
+    "tags": [
+      "Reinforcement Learning",
+      "Reinforcemect Learning",
+      "Physics",
+      "Unsupervised Learning",
+      "Transfer Learning",
+      "Deep Dives"
+    ],
+    "summary": "<p>Improving reinforcement learning for complex physics</p>\n<p>The post <a href=\"https://towardsdatascience.com/dynamical-system-transfer-learning-with-reduced-order-models/\">Dynamical System Transfer Learning with Reduced Order Models</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "Optimal Traffic Allocation Under Heterogeneous Variant Cost",
+    "author": "Alejandro Alvarez Perez",
+    "published_date": "Fri, 04 Sep 2026 15:30:02 GMT",
+    "url": "https://towardsdatascience.com/optimal-traffic-allocation-under-heterogeneous-variant-cost/",
+    "tags": [
+      "Data Science",
+      "Experimentation",
+      "Causal Inference",
+      "Statistics",
+      "Editor's Picks"
+    ],
+    "summary": "<p>Why the default 50/50 split is the wrong move when your treatment is more expensive than your control, and how cost-based sampling weights fix it</p>\n<p>The post <a href=\"https://towardsdatascience.com/optimal-traffic-allocation-under-heterogeneous-variant-cost/\">Optimal Traffic Allocation Under Heterogeneous Variant Cost</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "Disaggregation Is a Thousand-GPU Problem",
+    "author": "Mostafa Ibrahim",
+    "published_date": "Fri, 04 Sep 2026 14:00:02 GMT",
+    "url": "https://towardsdatascience.com/disaggregation-is-a-thousand-gpu-problem/",
+    "tags": [
+      "Large Language Models",
+      "Llm",
+      "Machine Learning",
+      "Mlops",
+      "Gpu",
+      "Inference"
+    ],
+    "summary": "<p>Three conditions that must hold before splitting prefill from decode pays off, and why chunked prefill is the right default below that threshold.</p>\n<p>The post <a href=\"https://towardsdatascience.com/disaggregation-is-a-thousand-gpu-problem/\">Disaggregation Is a Thousand-GPU Problem</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  },
+  {
+    "title": "The Power BI Developer's Survival Guide to Microsoft Fabric",
+    "author": "Nikola Ilic",
+    "published_date": "Fri, 04 Sep 2026 12:30:02 GMT",
+    "url": "https://towardsdatascience.com/the-power-bi-developers-survival-guide-to-microsoft-fabric/",
+    "tags": [
+      "Data Science",
+      "Power Bi",
+      "Microsoft Fabric",
+      "Analytics",
+      "Data Analysis",
+      "Business Analytics"
+    ],
+    "summary": "<p>Power BI Premium is gone. Microsoft Fabric took its place. Here's what actually changed for you, what didn't, and where to start — without the panic.</p>\n<p>The post <a href=\"https://towardsdatascience.com/the-power-bi-developers-survival-guide-to-microsoft-fabric/\">The Power BI Developer's Survival Guide to Microsoft Fabric</a> appeared first on <a href=\"https://towardsdatascience.com\">Towards Data Science</a>.</p>"
+  }
+]
