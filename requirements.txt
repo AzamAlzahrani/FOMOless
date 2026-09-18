@@ -1,0 +1,10 @@
+# FoMoLess dependencies
+pandas>=2.1
+numpy>=1.26
+adlfs>=2024.2.0          # Azure Data Lake Storage Gen2 filesystem for pandas (abfs://)
+fsspec>=2024.2.0         # adlfs's underlying filesystem interface (used for log-file writes)
+pyarrow>=14.0             # parquet read/write engine for pandas
+beautifulsoup4>=4.12      # HTML stripping for article summaries (TR-5/6/7)
+lxml>=5.0                 # faster, more forgiving HTML parser backend for BeautifulSoup
+python-dotenv>=1.0        # loads credentials from a local .env file
+jupyter>=1.0               # to open/run the notebook
