@@ -1,0 +1,89 @@
+{
+	"name": "DF_Clean_Devto",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Json1",
+						"type": "DatasetReference"
+					},
+					"name": "srcDevto"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Cleaned_devto",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "sort1"
+				},
+				{
+					"name": "window1"
+				},
+				{
+					"name": "filter1",
+					"description": "rn_title_author == 1"
+				},
+				{
+					"name": "window2"
+				},
+				{
+					"name": "filter2"
+				},
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          article_id as integer,",
+				"          title as string,",
+				"          author as string,",
+				"          published_date as string,",
+				"          url as string,",
+				"          tags as string[],",
+				"          reactions_count as integer,",
+				"          comments_count as integer,",
+				"          summary as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> srcDevto",
+				"srcDevto select(skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"derivedColumn1 sort(desc(published_date_ts, false)) ~> sort1",
+				"sort1 window(over(title,",
+				"          author),",
+				"     desc(published_date_ts, false),",
+				"     asc(article_id, false),",
+				"     rn_title_author = rowNumber()) ~> window1",
+				"window1 filter(rn_title_author == 1) ~> filter1",
+				"filter1 window(over(summary),",
+				"     desc(published_date_ts, false),",
+				"     rn_summary = rowNumber()) ~> window2",
+				"window2 filter(rn_summary == 1) ~> filter2",
+				"select1 derive(published_date_ts = toTimestamp(published_date)) ~> derivedColumn1",
+				"filter2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

@@ -1,0 +1,55 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "devto_source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "devto_10-9-26_raw_1k_records.json",
+				"folderPath": "raw",
+				"fileSystem": "fomoless"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"article_id": {
+					"type": "integer"
+				},
+				"title": {
+					"type": "string"
+				},
+				"author": {
+					"type": "string"
+				},
+				"published_date": {
+					"type": "string"
+				},
+				"url": {
+					"type": "string"
+				},
+				"tags": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"reactions_count": {
+					"type": "integer"
+				},
+				"comments_count": {
+					"type": "integer"
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

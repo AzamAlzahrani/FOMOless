@@ -1,0 +1,18 @@
+{
+	"name": "DS_HTTP_JSON",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_HTTP_Generic",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

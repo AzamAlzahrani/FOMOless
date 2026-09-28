@@ -1,0 +1,21 @@
+{
+	"name": "Cleaned_devto",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "devto_source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Processed",
+				"fileSystem": "fomoless"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

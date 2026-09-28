@@ -1,0 +1,75 @@
+{
+	"name": "PL_Ingest_Source_Generic",
+	"properties": {
+		"description": "Fetches one source's raw HTTP response (JSON API or RSS/XML feed) as bytes, unchanged, and lands it at raw/<sourceName>/<sourceName>_<timestamp>.<fileExtension> in the fomoless container. Called per-source, either directly or via PL_Ingest_All_Sources.",
+		"activities": [
+			{
+				"name": "CopyRawResponse",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:05:00",
+					"retry": 2,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_HTTP_Binary_Raw",
+						"type": "DatasetReference",
+						"parameters": {
+							"baseUrl": "@pipeline().parameters.baseUrl",
+							"relativeUrl": "@pipeline().parameters.relativeUrl"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ADLS_Binary_Raw",
+						"type": "DatasetReference",
+						"parameters": {
+							"folderPath": "@concat('raw/', pipeline().parameters.sourceName)",
+							"fileName": "@concat(pipeline().parameters.sourceName, '_', formatDateTime(utcnow(), 'yyyyMMdd_HHmmss'), '.', pipeline().parameters.fileExtension)"
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"sourceName": {
+				"type": "string"
+			},
+			"baseUrl": {
+				"type": "string"
+			},
+			"relativeUrl": {
+				"type": "string"
+			},
+			"fileExtension": {
+				"type": "string",
+				"defaultValue": "json"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-09-25T22:58:38Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

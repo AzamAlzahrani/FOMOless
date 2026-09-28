@@ -1,0 +1,127 @@
+{
+	"name": "PL_Ingest_Source_Generic_22Sep_Copy",
+	"properties": {
+		"description": "Fetches source response. If XML, natively converts to JSON. If JSON, passes through as JSON. Lands all outputs as .json at raw/<sourceName>/<sourceName>_<timestamp>.json",
+		"activities": [
+			{
+				"name": "CheckFormatAndCopy",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(pipeline().parameters.fileExtension, 'xml')",
+						"type": "Expression"
+					},
+					"ifFalseActivities": [
+						{
+							"name": "CopyJSONToJSON",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.00:05:00",
+								"retry": 1,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "JsonSource",
+									"storeSettings": {
+										"type": "HttpReadSettings",
+										"requestMethod": "GET"
+									}
+								},
+								"sink": {
+									"type": "JsonSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_HTTP_JSON",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_ADLS_JSON",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					],
+					"ifTrueActivities": [
+						{
+							"name": "CopyXMLToJSON",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.00:05:00",
+								"retry": 1,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "XmlSource",
+									"storeSettings": {
+										"type": "HttpReadSettings",
+										"requestMethod": "GET"
+									}
+								},
+								"sink": {
+									"type": "JsonSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_HTTP_XML",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_ADLS_JSON",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"sourceName": {
+				"type": "string",
+				"defaultValue": "hackernews"
+			},
+			"baseUrl": {
+				"type": "string",
+				"defaultValue": "https://hn.algolia.com"
+			},
+			"relativeUrl": {
+				"type": "string",
+				"defaultValue": "/api/v1/search?query=data+engineering&tags=story&hitsPerPage=1000"
+			},
+			"fileExtension": {
+				"type": "string",
+				"defaultValue": "json"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-09-21T23:31:48Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

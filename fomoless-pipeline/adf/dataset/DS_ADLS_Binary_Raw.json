@@ -1,0 +1,34 @@
+{
+	"name": "DS_ADLS_Binary_Raw",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_fomoless",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"folderPath": {
+				"type": "string"
+			},
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().folderPath",
+					"type": "Expression"
+				},
+				"fileSystem": "fomoless"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

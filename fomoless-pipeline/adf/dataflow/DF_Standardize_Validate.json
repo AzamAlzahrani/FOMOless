@@ -1,0 +1,79 @@
+{
+	"name": "DF_Standardize_Validate",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_Interim_JSON",
+						"type": "DatasetReference"
+					},
+					"name": "SourceInterim"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DS_Interim_JSON",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "AddSourceName"
+				},
+				{
+					"name": "FlattenTags"
+				},
+				{
+					"name": "titleUrlDateSummaryTrans"
+				},
+				{
+					"name": "urlandsummaryfix"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     sourceName as string (\"devto\")",
+				"}",
+				"source(output(",
+				"          article_id as integer,",
+				"          author as string,",
+				"          comments_count as short,",
+				"          published_date as string,",
+				"          reactions_count as short,",
+				"          summary as string,",
+				"          tags as string[],",
+				"          title as string,",
+				"          url as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> SourceInterim",
+				"SourceInterim derive(source_name = $sourceName) ~> AddSourceName",
+				"AddSourceName derive(Tag_1 = tags[1],",
+				"          Tag_2 = tags[2],",
+				"          Tag_3 = tags[3],",
+				"          Tag_4 = tags[4],",
+				"          Tag_5 = tags[5],",
+				"          Tag_6 = tags[6]) ~> FlattenTags",
+				"FlattenTags derive(title = trim(regexReplace(title,'\\\\s+',' ')),",
+				"          url = lower(trim(regexReplace(url,'/$',''))),",
+				"          summary = trim(regexReplace(summary,'\\\\s+',' '))) ~> titleUrlDateSummaryTrans",
+				"titleUrlDateSummaryTrans derive(canonical_url = iif(isNull(url), lower(trim(regexReplace(title, '[^a-zA-Z0-9]+', '-'))), url)) ~> urlandsummaryfix",
+				"urlandsummaryfix sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     format: 'parquet') ~> sink1"
+			]
+		}
+	}
+}

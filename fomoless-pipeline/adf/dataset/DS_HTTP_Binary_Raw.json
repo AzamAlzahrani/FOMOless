@@ -1,0 +1,32 @@
+{
+	"name": "DS_HTTP_Binary_Raw",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_HTTP_Generic",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"baseUrl": "@dataset().baseUrl"
+			}
+		},
+		"parameters": {
+			"baseUrl": {
+				"type": "string"
+			},
+			"relativeUrl": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().relativeUrl",
+					"type": "Expression"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

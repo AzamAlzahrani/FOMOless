@@ -1,0 +1,45 @@
+{
+	"name": "DS_Raw_HackerNews",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_fomoless",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "raw/HackerNews",
+				"fileSystem": "fomoless"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"article_id": {
+					"type": "string"
+				},
+				"title": {
+					"type": "string"
+				},
+				"author": {
+					"type": "string"
+				},
+				"published_date": {
+					"type": "string"
+				},
+				"url": {
+					"type": "string"
+				},
+				"points": {
+					"type": "integer"
+				},
+				"num_comments": {
+					"type": "integer"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

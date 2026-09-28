@@ -1,0 +1,15 @@
+{
+	"name": "FOMOlessDF",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "qatarcentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "62b8d6a0-f4d5-4097-8000-7f48028c086e",
+		"tenantId": "c21c1564-3efd-4c80-a491-2e8c7ccb3d41"
+	}
+}
