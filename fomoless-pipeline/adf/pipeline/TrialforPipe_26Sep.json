@@ -1,0 +1,529 @@
+{
+	"name": "TrialforPipe_26Sep",
+	"properties": {
+		"description": "Orchestrator. Runs PL_Ingest_Source_Generic once per source, landing raw bytes at raw/<sourceName>/ in the fomoless container. The 8 keyless sources run through the ForEach using sourceConfigs; The Guardian runs as its own activity because it needs an API key that must never be hardcoded into this pipeline. Each critical Databricks stage notifies the failure Logic App on failure, naming the stage that broke.",
+		"activities": [
+			{
+				"name": "ForEachSource",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.sourceConfigs",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 8,
+					"activities": [
+						{
+							"name": "IngestSource",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "PL_Ingest_Source_Generic",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"sourceName": {
+										"value": "@item().sourceName",
+										"type": "Expression"
+									},
+									"baseUrl": {
+										"value": "@item().baseUrl",
+										"type": "Expression"
+									},
+									"relativeUrl": {
+										"value": "@item().relativeUrl",
+										"type": "Expression"
+									},
+									"fileExtension": {
+										"value": "@item().fileExtension",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Ingest_HackerNews",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:05:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_HTTP_Binary_Raw",
+						"type": "DatasetReference",
+						"parameters": {
+							"baseUrl": {
+								"value": "https://hn.algolia.com",
+								"type": "Expression"
+							},
+							"relativeUrl": {
+								"value": "@concat('/api/v1/search_by_date?query=data+engineering&tags=story&hitsPerPage=1000&numericFilters=created_at_i%3E', string(div(sub(ticks(addDays(utcnow(), -30)), 621355968000000000), 10000000)))",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ADLS_Binary_Raw",
+						"type": "DatasetReference",
+						"parameters": {
+							"folderPath": {
+								"value": "@concat('raw/hackernews')",
+								"type": "Expression"
+							},
+							"fileName": {
+								"value": "@concat('hackernews_', formatDateTime(utcnow(), 'yyyyMMdd_HHmmss'), '.json')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "bronze",
+				"type": "DatabricksJob",
+				"dependsOn": [
+					{
+						"activity": "ForEachSource",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "Ingest_HackerNews",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.02:00:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 60,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"jobId": "709103720542280"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Notify_BronzeFailed",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "bronze",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.00:02:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+					"body": {
+						"value": "@json(concat('{\"pipeline\":\"', pipeline().Pipeline, '\", \"runId\":\"', pipeline().RunId, '\", \"stage\":\"bronze\", \"error\":\"', replace(string(activity('bronze').Error.message), '\"', ''''), '\"}'))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "silver",
+				"type": "DatabricksJob",
+				"dependsOn": [
+					{
+						"activity": "bronze",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.02:00:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 60,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"jobId": "919135056190277"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Notify_SilverFailed",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "silver",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.00:02:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+					"body": {
+						"value": "@json(concat('{\"pipeline\":\"', pipeline().Pipeline, '\", \"runId\":\"', pipeline().RunId, '\", \"stage\":\"silver\", \"error\":\"', replace(string(activity('silver').Error.message), '\"', ''''), '\"}'))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "gold",
+				"type": "DatabricksJob",
+				"dependsOn": [
+					{
+						"activity": "silver",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.02:00:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 60,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"jobId": "337441923161919"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Notify_GoldFailed",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "gold",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.00:02:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+					"body": {
+						"value": "@json(concat('{\"pipeline\":\"', pipeline().Pipeline, '\", \"runId\":\"', pipeline().RunId, '\", \"stage\":\"gold\", \"error\":\"', replace(string(activity('gold').Error.message), '\"', ''''), '\"}'))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "data_quality",
+				"type": "DatabricksJob",
+				"dependsOn": [
+					{
+						"activity": "gold",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.02:00:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 60,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"jobId": "147712968375796"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Notify_DataQualityFailed",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "data_quality",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.00:02:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+					"body": {
+						"value": "@json(concat('{\"pipeline\":\"', pipeline().Pipeline, '\", \"runId\":\"', pipeline().RunId, '\", \"stage\":\"data_quality\", \"error\":\"', replace(string(activity('data_quality').Error.message), '\"', ''''), '\"}'))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "load_to_mongo",
+				"type": "DatabricksJob",
+				"dependsOn": [
+					{
+						"activity": "data_quality",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.02:00:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 60,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"jobId": "1017561431572045"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Notify_LoadToMongoFailed",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "load_to_mongo",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.00:02:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+					"body": {
+						"value": "@json(concat('{\"pipeline\":\"', pipeline().Pipeline, '\", \"runId\":\"', pipeline().RunId, '\", \"stage\":\"load_to_mongo\", \"error\":\"', replace(string(activity('load_to_mongo').Error.message), '\"', ''''), '\"}'))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "send_digest",
+				"type": "DatabricksJob",
+				"dependsOn": [
+					{
+						"activity": "load_to_mongo",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.02:00:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 60,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"jobId": "215654747067945"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Notify_SendDigestFailed",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "send_digest",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.00:02:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+					"body": {
+						"value": "@json(concat('{\"pipeline\":\"', pipeline().Pipeline, '\", \"runId\":\"', pipeline().RunId, '\", \"stage\":\"send_digest\", \"error\":\"', replace(string(activity('send_digest').Error.message), '\"', ''''), '\"}'))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"sourceConfigs": {
+				"type": "array",
+				"defaultValue": [
+					{
+						"sourceName": "devto",
+						"baseUrl": "https://dev.to",
+						"relativeUrl": "/api/articles?tag=webdev&per_page=1000",
+						"fileExtension": "json"
+					},
+					{
+						"sourceName": "medium",
+						"baseUrl": "https://medium.com",
+						"relativeUrl": "/feed/tag/data-engineering",
+						"fileExtension": "xml"
+					},
+					{
+						"sourceName": "towardsdatascience",
+						"baseUrl": "https://towardsdatascience.com",
+						"relativeUrl": "/feed",
+						"fileExtension": "xml"
+					},
+					{
+						"sourceName": "bbc",
+						"baseUrl": "https://feeds.bbci.co.uk",
+						"relativeUrl": "/news/technology/rss.xml",
+						"fileExtension": "xml"
+					},
+					{
+						"sourceName": "stackoverflow_blog",
+						"baseUrl": "https://stackoverflow.blog",
+						"relativeUrl": "/feed/",
+						"fileExtension": "xml"
+					},
+					{
+						"sourceName": "stackexchange",
+						"baseUrl": "https://api.stackexchange.com",
+						"relativeUrl": "/2.3/questions?order=desc&sort=activity&tagged=data-engineering&site=stackoverflow&pagesize=100",
+						"fileExtension": "json"
+					}
+				]
+			},
+			"guardianApiKey": {
+				"type": "SecureString",
+				"defaultValue": {
+					"type": "SecureString",
+					"value": "**********"
+				}
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-09-26T22:05:41Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

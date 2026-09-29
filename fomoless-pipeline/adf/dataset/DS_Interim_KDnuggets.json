@@ -1,0 +1,22 @@
+{
+	"name": "DS_Interim_KDnuggets",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_fomoless",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "kdnuggets",
+				"folderPath": "interim",
+				"fileSystem": "fomoless"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

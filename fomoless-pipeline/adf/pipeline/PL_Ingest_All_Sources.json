@@ -1,0 +1,292 @@
+{
+	"name": "PL_Ingest_All_Sources",
+	"properties": {
+		"description": "Orchestrator. Runs PL_Ingest_Source_Generic once per source, landing raw bytes at raw/<sourceName>/ in the fomoless container. The 8 keyless sources run through the ForEach using sourceConfigs; The Guardian runs as its own activity because it needs an API key that must never be hardcoded into this pipeline.",
+		"activities": [
+			{
+				"name": "ForEachSource",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.sourceConfigs",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 8,
+					"activities": [
+						{
+							"name": "IngestSource",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "PL_Ingest_Source_Generic",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"sourceName": {
+										"value": "@item().sourceName",
+										"type": "Expression"
+									},
+									"baseUrl": {
+										"value": "@item().baseUrl",
+										"type": "Expression"
+									},
+									"relativeUrl": {
+										"value": "@item().relativeUrl",
+										"type": "Expression"
+									},
+									"fileExtension": {
+										"value": "@item().fileExtension",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Clean_and_Transform",
+				"type": "DatabricksJob",
+				"dependsOn": [
+					{
+						"activity": "ForEachSource",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"jobId": "455924365438624",
+					"jobParameters": {
+						"connection_string": "DefaultEndpointsProtocol=https;AccountName=sdadataengbootcamp4mou;AccountKey=03lGKoAQ/3aZPKCjr1kNZd/dldVTg2id+eZhNTA8btoZFcW9TEuMwzBRUnA99KiwrrPeX+s2AWni+AStDoAPQw==;EndpointSuffix=core.windows.net"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "validate",
+				"type": "DatabricksJob",
+				"dependsOn": [
+					{
+						"activity": "Clean_and_Transform",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"jobId": "348993502034228",
+					"jobParameters": {
+						"connection_string": "DefaultEndpointsProtocol=https;AccountName=sdadataengbootcamp4mou;AccountKey=03lGKoAQ/3aZPKCjr1kNZd/dldVTg2id+eZhNTA8btoZFcW9TEuMwzBRUnA99KiwrrPeX+s2AWni+AStDoAPQw==;EndpointSuffix=core.windows.net"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "load",
+				"type": "DatabricksJob",
+				"dependsOn": [
+					{
+						"activity": "validate",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"jobId": "279191678436692",
+					"jobParameters": {
+						"connection_string": "DefaultEndpointsProtocol=https;AccountName=sdadataengbootcamp4mou;AccountKey=03lGKoAQ/3aZPKCjr1kNZd/dldVTg2id+eZhNTA8btoZFcW9TEuMwzBRUnA99KiwrrPeX+s2AWni+AStDoAPQw==;EndpointSuffix=core.windows.net",
+						"mongo_uri": "mongodb+srv://azamalzahrani80_db_user:vPmAdpTfeu3GHwZc@cluster0.x6snyrt.mongodb.net/?appName=Cluster0"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "send_failure_alert",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Filter_Failed_Activities",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+					"body": {
+						"PipelineName": "@{pipeline().Pipeline}",
+						"RunId": "@{pipeline().RunId}",
+						"FailedActivityName": "@{activity('Filter_Failed_Activities').output.value[0].activityName}",
+						"ErrorMessage": "@{activity('Filter_Failed_Activities').output.value[0].error.message}"
+					}
+				}
+			},
+			{
+				"name": "Get_Pipeline_Errors",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "load",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": {
+						"value": "https://azure.com@{pipeline().DataFactory}/providers/Microsoft.DataFactory/factories/@{pipeline().DataFactory}/pipelineruns/@{pipeline().RunId}/queryActivityRuns?api-version=2018-06-01\n",
+						"type": "Expression"
+					},
+					"body": {
+						"lastUpdatedAfter": "2026-01-01T00:00:00Z",
+						"lastUpdatedBefore": "@{utcNow()}"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://azure.com"
+					}
+				}
+			},
+			{
+				"name": "Filter_Failed_Activities",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Get_Pipeline_Errors",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get_Pipeline_Errors').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().status, 'Failed')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"sourceConfigs": {
+				"type": "array",
+				"defaultValue": [
+					{
+						"sourceName": "devto",
+						"baseUrl": "https://dev.to",
+						"relativeUrl": "/api/articles?tag=webdev&per_page=1000",
+						"fileExtension": "json"
+					},
+					{
+						"sourceName": "medium",
+						"baseUrl": "https://medium.com",
+						"relativeUrl": "/feed/tag/data-engineering",
+						"fileExtension": "xml"
+					},
+					{
+						"sourceName": "towardsdatascience",
+						"baseUrl": "https://towardsdatascience.com",
+						"relativeUrl": "/feed",
+						"fileExtension": "xml"
+					},
+					{
+						"sourceName": "bbc",
+						"baseUrl": "https://feeds.bbci.co.uk",
+						"relativeUrl": "/news/technology/rss.xml",
+						"fileExtension": "xml"
+					},
+					{
+						"sourceName": "hackernews",
+						"baseUrl": "https://hn.algolia.com",
+						"relativeUrl": "/api/v1/search_by_date?query=data+engineering&tags=story&hitsPerPage=1000",
+						"fileExtension": "json"
+					},
+					{
+						"sourceName": "stackoverflow_blog",
+						"baseUrl": "https://stackoverflow.blog",
+						"relativeUrl": "/feed/",
+						"fileExtension": "xml"
+					},
+					{
+						"sourceName": "stackexchange",
+						"baseUrl": "https://api.stackexchange.com",
+						"relativeUrl": "/2.3/questions?order=desc&sort=activity&tagged=data-engineering&site=stackoverflow&pagesize=100",
+						"fileExtension": "json"
+					}
+				]
+			},
+			"guardianApiKey": {
+				"type": "SecureString"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-09-25T22:58:40Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

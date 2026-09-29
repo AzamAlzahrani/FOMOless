@@ -1,0 +1,29 @@
+{
+	"name": "DS_Interim_Generic",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_fomoless",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sourceName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "interim/@{dataset().sourceName}",
+					"type": "Expression"
+				},
+				"fileSystem": "fomoless"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

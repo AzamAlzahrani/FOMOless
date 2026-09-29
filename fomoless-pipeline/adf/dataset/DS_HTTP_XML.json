@@ -1,0 +1,17 @@
+{
+	"name": "DS_HTTP_XML",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_HTTP_Generic",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Xml",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
