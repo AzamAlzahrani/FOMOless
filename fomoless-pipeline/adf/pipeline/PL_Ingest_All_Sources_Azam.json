@@ -302,11 +302,8 @@
 				]
 			},
 			"guardianApiKey": {
-				"type": "SecureString",
-				"defaultValue": {
-					"type": "SecureString",
-					"value": "**********"
-				}
+				"type": "string",
+				"defaultValue": "**********"
 			}
 		},
 		"annotations": [],
