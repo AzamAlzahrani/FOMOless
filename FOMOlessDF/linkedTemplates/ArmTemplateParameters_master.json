@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "FOMOlessDF"
+		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
+		"LS_ADLS_fomoless_accountKey": {
+			"value": ""
+		},
+		"devto_source_accountKey": {
+			"value": ""
+		},
+		"linkedserv_fomoless_adls_MOUATH_accountKey": {
+			"value": ""
+		},
+		"LS_ADLS_fomoless_properties_typeProperties_url": {
+			"value": "https://sdadataengbootcamp4mou.dfs.core.windows.net/"
+		},
+		"LS_HTTP_Generic_properties_typeProperties_url": {
+			"value": "@{linkedService().baseUrl}"
+		},
+		"devto_source_properties_typeProperties_url": {
+			"value": "https://sdadataengbootcamp4mou.dfs.core.windows.net/"
+		},
+		"linkedserv_fomoless_adls_MOUATH_properties_typeProperties_url": {
+			"value": "https://sdadataengbootcamp4mou.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

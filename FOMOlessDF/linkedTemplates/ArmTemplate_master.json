@@ -1,0 +1,118 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "FOMOlessDF"
+		},
+		"AzureDatabricks1_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
+		},
+		"LS_ADLS_fomoless_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_fomoless'"
+		},
+		"devto_source_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'devto_source'"
+		},
+		"linkedserv_fomoless_adls_MOUATH_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'linkedserv_fomoless_adls_MOUATH'"
+		},
+		"LS_ADLS_fomoless_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sdadataengbootcamp4mou.dfs.core.windows.net/"
+		},
+		"LS_HTTP_Generic_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "@{linkedService().baseUrl}"
+		},
+		"devto_source_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sdadataengbootcamp4mou.dfs.core.windows.net/"
+		},
+		"linkedserv_fomoless_adls_MOUATH_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://sdadataengbootcamp4mou.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "FOMOlessDF_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDatabricks1_accessToken": {
+						"value": "[parameters('AzureDatabricks1_accessToken')]"
+					},
+					"LS_ADLS_fomoless_accountKey": {
+						"value": "[parameters('LS_ADLS_fomoless_accountKey')]"
+					},
+					"devto_source_accountKey": {
+						"value": "[parameters('devto_source_accountKey')]"
+					},
+					"linkedserv_fomoless_adls_MOUATH_accountKey": {
+						"value": "[parameters('linkedserv_fomoless_adls_MOUATH_accountKey')]"
+					},
+					"LS_ADLS_fomoless_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_fomoless_properties_typeProperties_url')]"
+					},
+					"LS_HTTP_Generic_properties_typeProperties_url": {
+						"value": "[parameters('LS_HTTP_Generic_properties_typeProperties_url')]"
+					},
+					"devto_source_properties_typeProperties_url": {
+						"value": "[parameters('devto_source_properties_typeProperties_url')]"
+					},
+					"linkedserv_fomoless_adls_MOUATH_properties_typeProperties_url": {
+						"value": "[parameters('linkedserv_fomoless_adls_MOUATH_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "FOMOlessDF_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'FOMOlessDF_ArmTemplate_0')]"
+			]
+		}
+	]
+}

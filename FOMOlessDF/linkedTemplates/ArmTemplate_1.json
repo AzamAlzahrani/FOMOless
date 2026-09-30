@@ -1,0 +1,2072 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "FOMOlessDF"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_Processed_Validated')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ADLS_fomoless",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "processed",
+						"fileSystem": "fomoless"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_Raw_HackerNews')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ADLS_fomoless",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "raw/HackerNews",
+						"fileSystem": "fomoless"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"article_id": {
+							"type": "string"
+						},
+						"title": {
+							"type": "string"
+						},
+						"author": {
+							"type": "string"
+						},
+						"published_date": {
+							"type": "string"
+						},
+						"url": {
+							"type": "string"
+						},
+						"points": {
+							"type": "integer"
+						},
+						"num_comments": {
+							"type": "integer"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_Raw_JSON_Generic')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LS_ADLS_fomoless",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "raw",
+						"fileSystem": "fomoless"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"article_id": {
+							"type": "string"
+						},
+						"title": {
+							"type": "string"
+						},
+						"author": {
+							"type": "string"
+						},
+						"published_date": {
+							"type": "string"
+						},
+						"url": {
+							"type": "string"
+						},
+						"points": {
+							"type": "integer"
+						},
+						"num_comments": {
+							"type": "integer"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Json1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "devto_source",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "devto_10-9-26_raw_1k_records.json",
+						"folderPath": "raw",
+						"fileSystem": "fomoless"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"article_id": {
+							"type": "integer"
+						},
+						"title": {
+							"type": "string"
+						},
+						"author": {
+							"type": "string"
+						},
+						"published_date": {
+							"type": "string"
+						},
+						"url": {
+							"type": "string"
+						},
+						"tags": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"reactions_count": {
+							"type": "integer"
+						},
+						"comments_count": {
+							"type": "integer"
+						},
+						"summary": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_Ingest_Source_Generic')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Fetches one source's raw HTTP response (JSON API or RSS/XML feed) as bytes, unchanged, and lands it at raw/<sourceName>/<sourceName>_<timestamp>.<fileExtension> in the fomoless container. Called per-source, either directly or via PL_Ingest_All_Sources.",
+				"activities": [
+					{
+						"name": "CopyRawResponse",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.00:05:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_HTTP_Binary_Raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"baseUrl": "@pipeline().parameters.baseUrl",
+									"relativeUrl": "@pipeline().parameters.relativeUrl"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_ADLS_Binary_Raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"folderPath": "@concat('raw/', pipeline().parameters.sourceName)",
+									"fileName": "@concat(pipeline().parameters.sourceName, '_', formatDateTime(utcnow(), 'yyyyMMdd_HHmmss'), '.', pipeline().parameters.fileExtension)"
+								}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"sourceName": {
+						"type": "string"
+					},
+					"baseUrl": {
+						"type": "string"
+					},
+					"relativeUrl": {
+						"type": "string"
+					},
+					"fileExtension": {
+						"type": "string",
+						"defaultValue": "json"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2026-09-25T22:58:38Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_Ingest_Source_Generic_22Sep_Copy')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Fetches source response. If XML, natively converts to JSON. If JSON, passes through as JSON. Lands all outputs as .json at raw/<sourceName>/<sourceName>_<timestamp>.json",
+				"activities": [
+					{
+						"name": "CheckFormatAndCopy",
+						"type": "IfCondition",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@equals(pipeline().parameters.fileExtension, 'xml')",
+								"type": "Expression"
+							},
+							"ifFalseActivities": [
+								{
+									"name": "CopyJSONToJSON",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.00:05:00",
+										"retry": 1,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "JsonSource",
+											"storeSettings": {
+												"type": "HttpReadSettings",
+												"requestMethod": "GET"
+											}
+										},
+										"sink": {
+											"type": "JsonSink",
+											"storeSettings": {
+												"type": "AzureBlobFSWriteSettings"
+											}
+										},
+										"enableStaging": false
+									},
+									"inputs": [
+										{
+											"referenceName": "DS_HTTP_JSON",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DS_ADLS_JSON",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									]
+								}
+							],
+							"ifTrueActivities": [
+								{
+									"name": "CopyXMLToJSON",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.00:05:00",
+										"retry": 1,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "XmlSource",
+											"storeSettings": {
+												"type": "HttpReadSettings",
+												"requestMethod": "GET"
+											}
+										},
+										"sink": {
+											"type": "JsonSink",
+											"storeSettings": {
+												"type": "AzureBlobFSWriteSettings"
+											}
+										},
+										"enableStaging": false
+									},
+									"inputs": [
+										{
+											"referenceName": "DS_HTTP_XML",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DS_ADLS_JSON",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									]
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"sourceName": {
+						"type": "string",
+						"defaultValue": "hackernews"
+					},
+					"baseUrl": {
+						"type": "string",
+						"defaultValue": "https://hn.algolia.com"
+					},
+					"relativeUrl": {
+						"type": "string",
+						"defaultValue": "/api/v1/search?query=data+engineering&tags=story&hitsPerPage=1000"
+					},
+					"fileExtension": {
+						"type": "string",
+						"defaultValue": "json"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2026-09-21T23:31:48Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DF_Clean_Devto')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "Json1",
+								"type": "DatasetReference"
+							},
+							"name": "srcDevto"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "Cleaned_devto",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "select1"
+						},
+						{
+							"name": "sort1"
+						},
+						{
+							"name": "window1"
+						},
+						{
+							"name": "filter1",
+							"description": "rn_title_author == 1"
+						},
+						{
+							"name": "window2"
+						},
+						{
+							"name": "filter2"
+						},
+						{
+							"name": "derivedColumn1"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          article_id as integer,",
+						"          title as string,",
+						"          author as string,",
+						"          published_date as string,",
+						"          url as string,",
+						"          tags as string[],",
+						"          reactions_count as integer,",
+						"          comments_count as integer,",
+						"          summary as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false,",
+						"     documentForm: 'documentPerLine') ~> srcDevto",
+						"srcDevto select(skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> select1",
+						"derivedColumn1 sort(desc(published_date_ts, false)) ~> sort1",
+						"sort1 window(over(title,",
+						"          author),",
+						"     desc(published_date_ts, false),",
+						"     asc(article_id, false),",
+						"     rn_title_author = rowNumber()) ~> window1",
+						"window1 filter(rn_title_author == 1) ~> filter1",
+						"filter1 window(over(summary),",
+						"     desc(published_date_ts, false),",
+						"     rn_summary = rowNumber()) ~> window2",
+						"window2 filter(rn_summary == 1) ~> filter2",
+						"select1 derive(published_date_ts = toTimestamp(published_date)) ~> derivedColumn1",
+						"filter2 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     format: 'parquet',",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> sink1"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Json1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DF_Standardize_Validate')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "DS_Interim_JSON",
+								"type": "DatasetReference"
+							},
+							"name": "SourceInterim"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "DS_Interim_JSON",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "AddSourceName"
+						},
+						{
+							"name": "FlattenTags"
+						},
+						{
+							"name": "titleUrlDateSummaryTrans"
+						},
+						{
+							"name": "urlandsummaryfix"
+						}
+					],
+					"scriptLines": [
+						"parameters{",
+						"     sourceName as string (\"devto\")",
+						"}",
+						"source(output(",
+						"          article_id as integer,",
+						"          author as string,",
+						"          comments_count as short,",
+						"          published_date as string,",
+						"          reactions_count as short,",
+						"          summary as string,",
+						"          tags as string[],",
+						"          title as string,",
+						"          url as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false,",
+						"     documentForm: 'documentPerLine') ~> SourceInterim",
+						"SourceInterim derive(source_name = $sourceName) ~> AddSourceName",
+						"AddSourceName derive(Tag_1 = tags[1],",
+						"          Tag_2 = tags[2],",
+						"          Tag_3 = tags[3],",
+						"          Tag_4 = tags[4],",
+						"          Tag_5 = tags[5],",
+						"          Tag_6 = tags[6]) ~> FlattenTags",
+						"FlattenTags derive(title = trim(regexReplace(title,'\\\\s+',' ')),",
+						"          url = lower(trim(regexReplace(url,'/$',''))),",
+						"          summary = trim(regexReplace(summary,'\\\\s+',' '))) ~> titleUrlDateSummaryTrans",
+						"titleUrlDateSummaryTrans derive(canonical_url = iif(isNull(url), lower(trim(regexReplace(title, '[^a-zA-Z0-9]+', '-'))), url)) ~> urlandsummaryfix",
+						"urlandsummaryfix sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     umask: 0022,",
+						"     preCommands: [],",
+						"     postCommands: [],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     format: 'parquet') ~> sink1"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_Ingest_All_Sources')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Orchestrator. Runs PL_Ingest_Source_Generic once per source, landing raw bytes at raw/<sourceName>/ in the fomoless container. The 8 keyless sources run through the ForEach using sourceConfigs; The Guardian runs as its own activity because it needs an API key that must never be hardcoded into this pipeline.",
+				"activities": [
+					{
+						"name": "ForEachSource",
+						"type": "ForEach",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@pipeline().parameters.sourceConfigs",
+								"type": "Expression"
+							},
+							"isSequential": false,
+							"batchCount": 8,
+							"activities": [
+								{
+									"name": "IngestSource",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL_Ingest_Source_Generic",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"sourceName": {
+												"value": "@item().sourceName",
+												"type": "Expression"
+											},
+											"baseUrl": {
+												"value": "@item().baseUrl",
+												"type": "Expression"
+											},
+											"relativeUrl": {
+												"value": "@item().relativeUrl",
+												"type": "Expression"
+											},
+											"fileExtension": {
+												"value": "@item().fileExtension",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "Clean_and_Transform",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "ForEachSource",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "455924365438624",
+							"jobParameters": {
+								"connection_string": "DefaultEndpointsProtocol=https;AccountName=sdadataengbootcamp4mou;AccountKey=03lGKoAQ/3aZPKCjr1kNZd/dldVTg2id+eZhNTA8btoZFcW9TEuMwzBRUnA99KiwrrPeX+s2AWni+AStDoAPQw==;EndpointSuffix=core.windows.net"
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "validate",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "Clean_and_Transform",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "348993502034228",
+							"jobParameters": {
+								"connection_string": "DefaultEndpointsProtocol=https;AccountName=sdadataengbootcamp4mou;AccountKey=03lGKoAQ/3aZPKCjr1kNZd/dldVTg2id+eZhNTA8btoZFcW9TEuMwzBRUnA99KiwrrPeX+s2AWni+AStDoAPQw==;EndpointSuffix=core.windows.net"
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "load",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "validate",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "279191678436692",
+							"jobParameters": {
+								"connection_string": "DefaultEndpointsProtocol=https;AccountName=sdadataengbootcamp4mou;AccountKey=03lGKoAQ/3aZPKCjr1kNZd/dldVTg2id+eZhNTA8btoZFcW9TEuMwzBRUnA99KiwrrPeX+s2AWni+AStDoAPQw==;EndpointSuffix=core.windows.net",
+								"mongo_uri": "mongodb+srv://azamalzahrani80_db_user:vPmAdpTfeu3GHwZc@cluster0.x6snyrt.mongodb.net/?appName=Cluster0"
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "send_failure_alert",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Filter_Failed_Activities",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {},
+							"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+							"body": {
+								"PipelineName": "@{pipeline().Pipeline}",
+								"RunId": "@{pipeline().RunId}",
+								"FailedActivityName": "@{activity('Filter_Failed_Activities').output.value[0].activityName}",
+								"ErrorMessage": "@{activity('Filter_Failed_Activities').output.value[0].error.message}"
+							}
+						}
+					},
+					{
+						"name": "Get_Pipeline_Errors",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "load",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {},
+							"url": {
+								"value": "https://azure.com@{pipeline().DataFactory}/providers/Microsoft.DataFactory/factories/@{pipeline().DataFactory}/pipelineruns/@{pipeline().RunId}/queryActivityRuns?api-version=2018-06-01\n",
+								"type": "Expression"
+							},
+							"body": {
+								"lastUpdatedAfter": "2026-01-01T00:00:00Z",
+								"lastUpdatedBefore": "@{utcNow()}"
+							},
+							"authentication": {
+								"type": "MSI",
+								"resource": "https://azure.com"
+							}
+						}
+					},
+					{
+						"name": "Filter_Failed_Activities",
+						"type": "Filter",
+						"dependsOn": [
+							{
+								"activity": "Get_Pipeline_Errors",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Get_Pipeline_Errors').output.value",
+								"type": "Expression"
+							},
+							"condition": {
+								"value": "@equals(item().status, 'Failed')",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"sourceConfigs": {
+						"type": "array",
+						"defaultValue": [
+							{
+								"sourceName": "devto",
+								"baseUrl": "https://dev.to",
+								"relativeUrl": "/api/articles?tag=webdev&per_page=1000",
+								"fileExtension": "json"
+							},
+							{
+								"sourceName": "medium",
+								"baseUrl": "https://medium.com",
+								"relativeUrl": "/feed/tag/data-engineering",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "towardsdatascience",
+								"baseUrl": "https://towardsdatascience.com",
+								"relativeUrl": "/feed",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "bbc",
+								"baseUrl": "https://feeds.bbci.co.uk",
+								"relativeUrl": "/news/technology/rss.xml",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "hackernews",
+								"baseUrl": "https://hn.algolia.com",
+								"relativeUrl": "/api/v1/search_by_date?query=data+engineering&tags=story&hitsPerPage=1000",
+								"fileExtension": "json"
+							},
+							{
+								"sourceName": "stackoverflow_blog",
+								"baseUrl": "https://stackoverflow.blog",
+								"relativeUrl": "/feed/",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "stackexchange",
+								"baseUrl": "https://api.stackexchange.com",
+								"relativeUrl": "/2.3/questions?order=desc&sort=activity&tagged=data-engineering&site=stackoverflow&pagesize=100",
+								"fileExtension": "json"
+							}
+						]
+					},
+					"guardianApiKey": {
+						"type": "SecureString"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2026-09-25T22:58:40Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_Ingest_Source_Generic')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_Ingest_All_Sources_22Sep_Copy')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Orchestrator Copy. Runs PL_Ingest_Source_Generic_Copy to standardize all outputs to JSON.",
+				"activities": [
+					{
+						"name": "ForEachSource",
+						"type": "ForEach",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@pipeline().parameters.sourceConfigs",
+								"type": "Expression"
+							},
+							"isSequential": false,
+							"batchCount": 8,
+							"activities": [
+								{
+									"name": "IngestSource",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL_Ingest_Source_Generic_22Sep_Copy",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"sourceName": {
+												"value": "@item().sourceName",
+												"type": "Expression"
+											},
+											"baseUrl": {
+												"value": "@item().baseUrl",
+												"type": "Expression"
+											},
+											"relativeUrl": {
+												"value": "@item().relativeUrl",
+												"type": "Expression"
+											},
+											"fileExtension": {
+												"value": "@item().fileExtension",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "Clean_and_Transform",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "ForEachSource",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "455924365438624",
+							"jobParameters": {
+								"connection_string": "DefaultEndpointsProtocol=https;AccountName=sdadataengbootcamp4mou;AccountKey=03lGKoAQ/3aZPKCjr1kNZd/dldVTg2id+eZhNTA8btoZFcW9TEuMwzBRUnA99KiwrrPeX+s2AWni+AStDoAPQw==;EndpointSuffix=core.windows.net"
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "validate",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "Clean_and_Transform",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "348993502034228",
+							"jobParameters": {
+								"connection_string": "DefaultEndpointsProtocol=https;AccountName=sdadataengbootcamp4mou;AccountKey=03lGKoAQ/3aZPKCjr1kNZd/dldVTg2id+eZhNTA8btoZFcW9TEuMwzBRUnA99KiwrrPeX+s2AWni+AStDoAPQw==;EndpointSuffix=core.windows.net"
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "load",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "validate",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "279191678436692",
+							"jobParameters": {
+								"connection_string": "DefaultEndpointsProtocol=https;AccountName=sdadataengbootcamp4mou;AccountKey=03lGKoAQ/3aZPKCjr1kNZd/dldVTg2id+eZhNTA8btoZFcW9TEuMwzBRUnA99KiwrrPeX+s2AWni+AStDoAPQw==;EndpointSuffix=core.windows.net",
+								"mongo_uri": "mongodb+srv://azamalzahrani80_db_user:vPmAdpTfeu3GHwZc@cluster0.x6snyrt.mongodb.net/?appName=Cluster0"
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "send_failure_alert",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Filter_Failed_Activities",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {},
+							"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+							"body": {
+								"PipelineName": "@{pipeline().Pipeline}",
+								"RunId": "@{pipeline().RunId}",
+								"FailedActivityName": "@{activity('Filter_Failed_Activities').output.value[0].activityName}",
+								"ErrorMessage": "@{activity('Filter_Failed_Activities').output.value[0].error.message}"
+							}
+						}
+					},
+					{
+						"name": "Get_Pipeline_Errors",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "load",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {},
+							"url": {
+								"value": "https://azure.com@{pipeline().DataFactory}/providers/Microsoft.DataFactory/factories/@{pipeline().DataFactory}/pipelineruns/@{pipeline().RunId}/queryActivityRuns?api-version=2018-06-01\n",
+								"type": "Expression"
+							},
+							"body": {
+								"lastUpdatedAfter": "2026-01-01T00:00:00Z",
+								"lastUpdatedBefore": "@{utcNow()}"
+							},
+							"authentication": {
+								"type": "MSI",
+								"resource": "https://azure.com"
+							}
+						}
+					},
+					{
+						"name": "Filter_Failed_Activities",
+						"type": "Filter",
+						"dependsOn": [
+							{
+								"activity": "Get_Pipeline_Errors",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Get_Pipeline_Errors').output.value",
+								"type": "Expression"
+							},
+							"condition": {
+								"value": "@equals(item().status, 'Failed')",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"sourceConfigs": {
+						"type": "array",
+						"defaultValue": [
+							{
+								"sourceName": "devto",
+								"baseUrl": "https://dev.to",
+								"relativeUrl": "/api/articles?tag=webdev&per_page=1000",
+								"fileExtension": "json"
+							},
+							{
+								"sourceName": "medium",
+								"baseUrl": "https://medium.com",
+								"relativeUrl": "/feed/tag/data-engineering",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "towardsdatascience",
+								"baseUrl": "https://towardsdatascience.com",
+								"relativeUrl": "/feed",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "bbc",
+								"baseUrl": "https://feeds.bbci.co.uk",
+								"relativeUrl": "/news/technology/rss.xml",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "hackernews",
+								"baseUrl": "https://hn.algolia.com",
+								"relativeUrl": "/api/v1/search_by_date?query=data+engineering&tags=story&hitsPerPage=1000",
+								"fileExtension": "json"
+							},
+							{
+								"sourceName": "stackoverflow_blog",
+								"baseUrl": "https://stackoverflow.blog",
+								"relativeUrl": "/feed/",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "stackexchange",
+								"baseUrl": "https://api.stackexchange.com",
+								"relativeUrl": "/2.3/questions?order=desc&sort=activity&tagged=data-engineering&site=stackoverflow&pagesize=100",
+								"fileExtension": "json"
+							}
+						]
+					},
+					"guardianApiKey": {
+						"type": "SecureString"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2026-09-21T23:31:49Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_Ingest_Source_Generic_22Sep_Copy')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_Ingest_All_Sources_Azam')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Orchestrator. Runs PL_Ingest_Source_Generic once per source, landing raw bytes at raw/<sourceName>/ in the fomoless container. The 8 keyless sources run through the ForEach using sourceConfigs; The Guardian runs as its own activity because it needs an API key that must never be hardcoded into this pipeline.",
+				"activities": [
+					{
+						"name": "ForEachSource",
+						"type": "ForEach",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@pipeline().parameters.sourceConfigs",
+								"type": "Expression"
+							},
+							"isSequential": false,
+							"batchCount": 8,
+							"activities": [
+								{
+									"name": "IngestSource",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL_Ingest_Source_Generic",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"sourceName": {
+												"value": "@item().sourceName",
+												"type": "Expression"
+											},
+											"baseUrl": {
+												"value": "@item().baseUrl",
+												"type": "Expression"
+											},
+											"relativeUrl": {
+												"value": "@item().relativeUrl",
+												"type": "Expression"
+											},
+											"fileExtension": {
+												"value": "@item().fileExtension",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "bronze",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "ForEachSource",
+								"dependencyConditions": [
+									"Completed"
+								]
+							},
+							{
+								"activity": "Ingest_HackerNews",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "709103720542280"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "silver",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "bronze",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "919135056190277"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "gold",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "silver",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "337441923161919"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "data_quality",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "gold",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "147712968375796"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "load_to_mongo",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "data_quality",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "1017561431572045"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Ingest_HackerNews",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.00:05:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
+								},
+								"formatSettings": {
+									"type": "BinaryReadSettings"
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_HTTP_Binary_Raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"baseUrl": {
+										"value": "https://hn.algolia.com",
+										"type": "Expression"
+									},
+									"relativeUrl": {
+										"value": "@concat('/api/v1/search_by_date?query=data+engineering&tags=story&hitsPerPage=1000&numericFilters=created_at_i%3E', string(div(sub(ticks(addDays(utcnow(), -30)), 621355968000000000), 10000000)))",
+										"type": "Expression"
+									}
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_ADLS_Binary_Raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"folderPath": {
+										"value": "@concat('raw/hackernews')",
+										"type": "Expression"
+									},
+									"fileName": {
+										"value": "@concat('hackernews_', formatDateTime(utcnow(), 'yyyyMMdd_HHmmss'), '.json')",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"sourceConfigs": {
+						"type": "array",
+						"defaultValue": [
+							{
+								"sourceName": "devto",
+								"baseUrl": "https://dev.to",
+								"relativeUrl": "/api/articles?tag=webdev&per_page=1000",
+								"fileExtension": "json"
+							},
+							{
+								"sourceName": "medium",
+								"baseUrl": "https://medium.com",
+								"relativeUrl": "/feed/tag/data-engineering",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "towardsdatascience",
+								"baseUrl": "https://towardsdatascience.com",
+								"relativeUrl": "/feed",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "bbc",
+								"baseUrl": "https://feeds.bbci.co.uk",
+								"relativeUrl": "/news/technology/rss.xml",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "stackoverflow_blog",
+								"baseUrl": "https://stackoverflow.blog",
+								"relativeUrl": "/feed/",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "stackexchange",
+								"baseUrl": "https://api.stackexchange.com",
+								"relativeUrl": "/2.3/questions?order=desc&sort=activity&tagged=data-engineering&site=stackoverflow&pagesize=100",
+								"fileExtension": "json"
+							}
+						]
+					},
+					"guardianApiKey": {
+						"type": "string",
+						"defaultValue": "**********"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2026-09-25T23:18:15Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_Ingest_Source_Generic')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/TrialforPipe_26Sep')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Orchestrator. Runs PL_Ingest_Source_Generic once per source, landing raw bytes at raw/<sourceName>/ in the fomoless container. The 8 keyless sources run through the ForEach using sourceConfigs; The Guardian runs as its own activity because it needs an API key that must never be hardcoded into this pipeline. Each critical Databricks stage notifies the failure Logic App on failure, naming the stage that broke.",
+				"activities": [
+					{
+						"name": "ForEachSource",
+						"type": "ForEach",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@pipeline().parameters.sourceConfigs",
+								"type": "Expression"
+							},
+							"isSequential": false,
+							"batchCount": 8,
+							"activities": [
+								{
+									"name": "IngestSource",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL_Ingest_Source_Generic",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"sourceName": {
+												"value": "@item().sourceName",
+												"type": "Expression"
+											},
+											"baseUrl": {
+												"value": "@item().baseUrl",
+												"type": "Expression"
+											},
+											"relativeUrl": {
+												"value": "@item().relativeUrl",
+												"type": "Expression"
+											},
+											"fileExtension": {
+												"value": "@item().fileExtension",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "Ingest_HackerNews",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.00:05:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
+								},
+								"formatSettings": {
+									"type": "BinaryReadSettings"
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_HTTP_Binary_Raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"baseUrl": {
+										"value": "https://hn.algolia.com",
+										"type": "Expression"
+									},
+									"relativeUrl": {
+										"value": "@concat('/api/v1/search_by_date?query=data+engineering&tags=story&hitsPerPage=1000&numericFilters=created_at_i%3E', string(div(sub(ticks(addDays(utcnow(), -30)), 621355968000000000), 10000000)))",
+										"type": "Expression"
+									}
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_ADLS_Binary_Raw",
+								"type": "DatasetReference",
+								"parameters": {
+									"folderPath": {
+										"value": "@concat('raw/hackernews')",
+										"type": "Expression"
+									},
+									"fileName": {
+										"value": "@concat('hackernews_', formatDateTime(utcnow(), 'yyyyMMdd_HHmmss'), '.json')",
+										"type": "Expression"
+									}
+								}
+							}
+						]
+					},
+					{
+						"name": "bronze",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "ForEachSource",
+								"dependencyConditions": [
+									"Completed"
+								]
+							},
+							{
+								"activity": "Ingest_HackerNews",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.02:00:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 60,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "709103720542280"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Notify_BronzeFailed",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "bronze",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.00:02:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+							"body": {
+								"value": "@json(concat('{\"pipeline\":\"', pipeline().Pipeline, '\", \"runId\":\"', pipeline().RunId, '\", \"stage\":\"bronze\", \"error\":\"', replace(string(activity('bronze').Error.message), '\"', ''''), '\"}'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "silver",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "bronze",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.02:00:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 60,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "919135056190277"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Notify_SilverFailed",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "silver",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.00:02:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+							"body": {
+								"value": "@json(concat('{\"pipeline\":\"', pipeline().Pipeline, '\", \"runId\":\"', pipeline().RunId, '\", \"stage\":\"silver\", \"error\":\"', replace(string(activity('silver').Error.message), '\"', ''''), '\"}'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "gold",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "silver",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.02:00:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 60,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "337441923161919"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Notify_GoldFailed",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "gold",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.00:02:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+							"body": {
+								"value": "@json(concat('{\"pipeline\":\"', pipeline().Pipeline, '\", \"runId\":\"', pipeline().RunId, '\", \"stage\":\"gold\", \"error\":\"', replace(string(activity('gold').Error.message), '\"', ''''), '\"}'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "data_quality",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "gold",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.02:00:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 60,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "147712968375796"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Notify_DataQualityFailed",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "data_quality",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.00:02:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+							"body": {
+								"value": "@json(concat('{\"pipeline\":\"', pipeline().Pipeline, '\", \"runId\":\"', pipeline().RunId, '\", \"stage\":\"data_quality\", \"error\":\"', replace(string(activity('data_quality').Error.message), '\"', ''''), '\"}'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "load_to_mongo",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "data_quality",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.02:00:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 60,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "1017561431572045"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Notify_LoadToMongoFailed",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "load_to_mongo",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.00:02:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+							"body": {
+								"value": "@json(concat('{\"pipeline\":\"', pipeline().Pipeline, '\", \"runId\":\"', pipeline().RunId, '\", \"stage\":\"load_to_mongo\", \"error\":\"', replace(string(activity('load_to_mongo').Error.message), '\"', ''''), '\"}'))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "send_digest",
+						"type": "DatabricksJob",
+						"dependsOn": [
+							{
+								"activity": "load_to_mongo",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.02:00:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 60,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"jobId": "215654747067945"
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureDatabricks1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Notify_SendDigestFailed",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "send_digest",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.00:02:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json"
+							},
+							"url": "https://prod-04.qatarcentral.logic.azure.com:443/workflows/8886bbb8962748e6a3fa59c7ee4fc4ec/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=lTvvCUbpjZvoQJwPDaFWCH_HK0Fwval8rlf8WXdqsqI",
+							"body": {
+								"value": "@json(concat('{\"pipeline\":\"', pipeline().Pipeline, '\", \"runId\":\"', pipeline().RunId, '\", \"stage\":\"send_digest\", \"error\":\"', replace(string(activity('send_digest').Error.message), '\"', ''''), '\"}'))",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"sourceConfigs": {
+						"type": "array",
+						"defaultValue": [
+							{
+								"sourceName": "devto",
+								"baseUrl": "https://dev.to",
+								"relativeUrl": "/api/articles?tag=webdev&per_page=1000",
+								"fileExtension": "json"
+							},
+							{
+								"sourceName": "medium",
+								"baseUrl": "https://medium.com",
+								"relativeUrl": "/feed/tag/data-engineering",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "towardsdatascience",
+								"baseUrl": "https://towardsdatascience.com",
+								"relativeUrl": "/feed",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "bbc",
+								"baseUrl": "https://feeds.bbci.co.uk",
+								"relativeUrl": "/news/technology/rss.xml",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "stackoverflow_blog",
+								"baseUrl": "https://stackoverflow.blog",
+								"relativeUrl": "/feed/",
+								"fileExtension": "xml"
+							},
+							{
+								"sourceName": "stackexchange",
+								"baseUrl": "https://api.stackexchange.com",
+								"relativeUrl": "/2.3/questions?order=desc&sort=activity&tagged=data-engineering&site=stackoverflow&pagesize=100",
+								"fileExtension": "json"
+							}
+						]
+					},
+					"guardianApiKey": {
+						"type": "string",
+						"defaultValue": "**********"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2026-09-26T22:05:41Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_Ingest_Source_Generic')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Last_Day_onSDA_Scheduled_Trigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipeline": {
+					"pipelineReference": {
+						"referenceName": "TrialforPipe_26Sep",
+						"type": "PipelineReference"
+					},
+					"parameters": {}
+				},
+				"type": "TumblingWindowTrigger",
+				"typeProperties": {
+					"frequency": "Hour",
+					"interval": 1,
+					"startTime": "2026-10-01T08:30:00Z",
+					"endTime": "2026-10-01T09:28:00Z",
+					"delay": "00:00:00",
+					"maxConcurrency": 50,
+					"retryPolicy": {
+						"intervalInSeconds": 30
+					},
+					"dependsOn": []
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/TrialforPipe_26Sep')]"
+			]
+		}
+	]
+}
