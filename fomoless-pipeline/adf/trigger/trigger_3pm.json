@@ -1,0 +1,25 @@
+{
+	"name": "trigger_3pm",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "TrialforPipe_26Sep",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2026-10-18T15:15:00",
+				"endTime": "2026-10-19T07:29:00",
+				"timeZone": "Arab Standard Time"
+			}
+		}
+	}
+}
