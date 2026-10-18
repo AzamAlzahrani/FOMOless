@@ -8,6 +8,46 @@
 				"pipelineReference": {
 					"referenceName": "TrialforPipe_26Sep",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceConfigs": [
+						{
+							"sourceName": "devto",
+							"baseUrl": "https://dev.to",
+							"relativeUrl": "/api/articles?tag=webdev&per_page=1000",
+							"fileExtension": "json"
+						},
+						{
+							"sourceName": "medium",
+							"baseUrl": "https://medium.com",
+							"relativeUrl": "/feed/tag/data-engineering",
+							"fileExtension": "xml"
+						},
+						{
+							"sourceName": "towardsdatascience",
+							"baseUrl": "https://towardsdatascience.com",
+							"relativeUrl": "/feed",
+							"fileExtension": "xml"
+						},
+						{
+							"sourceName": "bbc",
+							"baseUrl": "https://feeds.bbci.co.uk",
+							"relativeUrl": "/news/technology/rss.xml",
+							"fileExtension": "xml"
+						},
+						{
+							"sourceName": "stackoverflow_blog",
+							"baseUrl": "https://stackoverflow.blog",
+							"relativeUrl": "/feed/",
+							"fileExtension": "xml"
+						},
+						{
+							"sourceName": "stackexchange",
+							"baseUrl": "https://api.stackexchange.com",
+							"relativeUrl": "/2.3/questions?order=desc&sort=activity&tagged=data-engineering&site=stackoverflow&pagesize=100",
+							"fileExtension": "json"
+						}
+					]
 				}
 			}
 		],
