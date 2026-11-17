@@ -1386,7 +1386,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"jobId": "709103720542280"
+							"jobId": "847226773363777"
 						},
 						"linkedServiceName": {
 							"referenceName": "AzureDatabricks1",
@@ -1444,7 +1444,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"jobId": "919135056190277"
+							"jobId": "268134234580697"
 						},
 						"linkedServiceName": {
 							"referenceName": "AzureDatabricks1",
@@ -1502,7 +1502,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"jobId": "337441923161919"
+							"jobId": "992929036916822"
 						},
 						"linkedServiceName": {
 							"referenceName": "AzureDatabricks1",
@@ -1560,7 +1560,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"jobId": "147712968375796"
+							"jobId": "262456908908538"
 						},
 						"linkedServiceName": {
 							"referenceName": "AzureDatabricks1",
@@ -1618,7 +1618,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"jobId": "1017561431572045"
+							"jobId": "790147526737453"
 						},
 						"linkedServiceName": {
 							"referenceName": "AzureDatabricks1",
@@ -1676,7 +1676,7 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"jobId": "215654747067945"
+							"jobId": "920415574199108"
 						},
 						"linkedServiceName": {
 							"referenceName": "AzureDatabricks1",
@@ -2378,7 +2378,7 @@
 				"annotations": [],
 				"type": "AzureDatabricks",
 				"typeProperties": {
-					"domain": "https://adb-7405604926203337.17.azuredatabricks.net",
+					"domain": "https://adb-7405615698152921.1.azuredatabricks.net",
 					"accessToken": {
 						"type": "SecureString",
 						"value": "[parameters('AzureDatabricks1_accessToken')]"
@@ -2485,8 +2485,7 @@
 						"interval": 1,
 						"startTime": "2026-10-22T15:15:00",
 						"endTime": "2026-10-23T07:29:00",
-						"timeZone": "Arab Standard Time",
-						"schedule": {}
+						"timeZone": "Arab Standard Time"
 					}
 				}
 			},
